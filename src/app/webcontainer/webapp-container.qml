@@ -184,6 +184,7 @@ BrowserWindow {
 
         onLoaded: {
             var context = item.currentWebview.context;
+            context.offTheRecord = false;
             onlineAccountsController.setupWebcontextForAccount(context);
             item.currentWebview.settings.localContentCanAccessRemoteUrls = localContentCanAccessRemoteUrls;
 
