@@ -17,6 +17,8 @@ set(DOMAIN ${GETTEXT_PACKAGE})
 set(POT_FILE ${DOMAIN}.pot)
 file(GLOB PO_FILES *.po)
 
+add_custom_target(po-src ALL SOURCES ${PO_FILES} ${POT_FILE})
+
 add_custom_target(${POT_FILE} ALL
                   COMMENT "Generating translation template"
                   COMMAND ${INTLTOOL_EXTRACT} --update --type=gettext/ini
@@ -38,3 +40,4 @@ foreach(PO_FILE ${PO_FILES})
             DESTINATION ${INSTALL_DIR}
             RENAME ${DOMAIN}.mo)
 endforeach(PO_FILE)
+

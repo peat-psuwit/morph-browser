@@ -45,6 +45,12 @@ install(FILES ${QML_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser/we
 install(DIRECTORY actions DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser/webcontainer
         FILES_MATCHING PATTERN *.qml)
 
+add_custom_target(webapp-container-qml ALL SOURCES ${QML_FILES})
+
 install(DIRECTORY assets
         DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser/webcontainer
         FILES_MATCHING PATTERN *.png)
+
+file(GLOB_RECURSE ASSETS *.png)
+add_custom_target(webapp-container-assets ALL SOURCES ${ASSETS})
+

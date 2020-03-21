@@ -28,7 +28,6 @@ add_library(${WEBBROWSER_APP_MODELS} STATIC ${WEBBROWSER_APP_MODELS_SRC})
 target_link_libraries(${WEBBROWSER_APP_MODELS}
     Qt5::Core
     Qt5::Sql
-#    Qt5::WebEngine
 )
 
 set(WEBBROWSER_APP_SRC
@@ -55,9 +54,14 @@ install(TARGETS ${WEBBROWSER_APP}
 file(GLOB QML_FILES *.qml qmldir *.js)
 install(FILES ${QML_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser/webbrowser)
 
+add_custom_target(morph-browser-qml ALL SOURCES ${QML_FILES})
+
 install(DIRECTORY assets
         DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser/webbrowser
         FILES_MATCHING PATTERN *.png PATTERN *.svg PATTERN *.sci)
+
+file(GLOB_RECURSE ASSETS *.png *.svg *.sci)
+add_custom_target(morph-browser-assets ALL SOURCES ${ASSETS})
 
 install(DIRECTORY searchengines
         DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser/webbrowser

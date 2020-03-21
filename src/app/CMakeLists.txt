@@ -5,6 +5,7 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5Network REQUIRED)
 find_package(Qt5Qml REQUIRED)
 find_package(Qt5Quick REQUIRED)
+find_package(Qt5Sql REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 #find_package(Qt5WebEngine REQUIRED)
 
@@ -43,6 +44,7 @@ target_link_libraries(${COMMONLIB}
     Qt5::Network
     Qt5::Qml
     Qt5::Quick
+    Qt5::Sql
     Qt5::Widgets
     Qt5WebEngine
     Qt5WebEngineCore
@@ -56,5 +58,6 @@ install(FILES ${JS_FILES} DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser)
 install(DIRECTORY actions DESTINATION ${CMAKE_INSTALL_DATADIR}/morph-browser
         FILES_MATCHING PATTERN *.qml)
 
+add_custom_target(webbrowser-common-qml ALL SOURCES ${QML_FILES} ${JS_FILES})
 add_subdirectory(webbrowser)
 add_subdirectory(webcontainer)

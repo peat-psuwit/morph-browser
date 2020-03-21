@@ -11,3 +11,6 @@ else()
     install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/html
     DESTINATION ${CMAKE_INSTALL_DATADIR}/doc/morph-web)
 endif()
+
+file(GLOB DOC_SRC *.css *.qdoc *.qdocconf)
+add_custom_target(doc-src ALL SOURCES ${DOC_SRC})
