@@ -69,7 +69,7 @@ add_custom_target(uninstall
 add_subdirectory(src)
 
 #enable_testing()
-add_subdirectory(tests)
+#add_subdirectory(tests)
 
 # make non compiled files (QML, JS, images, etc.) visible in QtCreator
 file(GLOB INFO *.png COPYING README)
